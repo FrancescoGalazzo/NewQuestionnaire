@@ -17,7 +17,7 @@ const validators = {
   
   validateUserCreation: [
     body('name').notEmpty().withMessage('Name is required'),
-    body('email').isEmail().withMessage('Valid email is required'),
+    body('questionnaire').isInt().withMessage('Valid questionnaire is required'),
     (req, res, next) => {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {

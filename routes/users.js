@@ -13,7 +13,7 @@ const { validateUserId, validateUserCreation } = require('../middleware/validato
  *       required:
  *         - id
  *         - name
- *         - email
+ *         - questionnaire
  *       properties:
  *         id:
  *           type: integer
@@ -21,13 +21,13 @@ const { validateUserId, validateUserCreation } = require('../middleware/validato
  *         name:
  *           type: string
  *           description: Nome dell'utente
- *         email:
- *           type: string
- *           description: Email dell'utente
+ *         questionnaire:
+ *           type: integer
+ *           description: Numero del questionario
  *       example:
  *         id: 1
  *         name: John Doe
- *         email: john@example.com
+ *         questionnaire: 1
  */
 
 /**
@@ -92,12 +92,12 @@ router.get('/:id', validateUserId, userController.getUserById);
  *             type: object
  *             required:
  *               - name
- *               - email
+ *               - questionnaire
  *             properties:
  *               name:
  *                 type: string
- *               email:
- *                 type: string
+ *               questionnaire:
+ *                 type: integer
  *     responses:
  *       201:
  *         description: Utente creato con successo

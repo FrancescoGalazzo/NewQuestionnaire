@@ -30,14 +30,14 @@ const userModel = {
 
  createUser: (userData) => {
     return new Promise((resolve, reject) => {
-      const { name, email } = userData;
-      db.run('INSERT INTO users (name, email) VALUES (?, ?)', 
-        [name, email], 
+      const { name, questionnaire } = userData;
+      db.run('INSERT INTO users (name, questionnaire) VALUES (?, ?)', 
+        [name, questionnaire], 
         function(err) {
           if (err) {
             reject(err);
           } else {
-            resolve({ id: this.lastID, name, email });
+            resolve({ id: this.lastID, name, questionnaire });
           }
         }
       );
