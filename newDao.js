@@ -1,4 +1,5 @@
-const db = require('./db');
+'use strict';
+const db = require('../config/database');
 
 // Obtain all the questions of an idAdmin admin
 exports.getQuestionsByAdmin = (idAdmin) => {
