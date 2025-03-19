@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# Check if database name is provided
+if [ $# -eq 0 ]; then
+  echo "Usage: $0 database_name.db"
+  exit 1
+fi
+
+DB_NAME="$1"
+
+# Check if the database file exists
+if [ ! -f "$DB_NAME" ]; then
+  echo "Error: Database file '$DB_NAME' does not exist."
+  exit 1
+fi
+
+# Check if it's a valid SQLite database
+if ! sqlite3 "$DB_NAME" "PRAGMA integrity_check;" > /dev/null 2>&1; then
+  echo "Error: '$DB_NAME' is not a valid SQLite database."
+  exit 1
+fi
+
+# Generate and execute DROP TABLE statements
+echo "Dropping all tables from $DB_NAME..."
+echo "SELECT 'DROP TABLE IF EXISTS ' || name || ';' FROM sqlite_master WHERE type = 'table' AND name NOT LIKE 'sqlite_%';" | sqlite3 -readonly "$DB_NAME" | sqlite3 "$DB_NAME"
+
+echo "All tables have been dropped."
