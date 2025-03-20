@@ -76,8 +76,8 @@ INSERT INTO admin (id, user, hash, color)
 VALUES (2, 'admin2', 'test2', 'red');
 
 -- Insert Questionnaire
-INSERT INTO questionnaires (qid, admin, title, num_questions) 
-VALUES (1, 1, 'Survey Example', 3);
+INSERT INTO questionnaires (qid, admin, title, num_questions, num_users) 
+VALUES (1, 1, 'Survey Example', 3, 1);
 
 -- Insert Questions
 -- Question 1: Closed with 2 options
