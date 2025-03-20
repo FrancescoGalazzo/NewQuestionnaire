@@ -86,7 +86,7 @@ VALUES (1, 1, 'What is your favorite color?', 0, TRUE, 1, 1);
 
 -- Question 2: Closed with 3 options
 INSERT INTO questions (did, questionnaire, query, type, required, min, max) 
-VALUES (2, 1, 'What is your favorite fruit?', 0, FALSE, 1, 2);
+VALUES (2, 1, 'What is your favorite fruit?', 0, TRUE, 1, 2);
 
 -- Question 3: Open-ended
 INSERT INTO questions (did, questionnaire, query, type, required) 
@@ -105,5 +105,26 @@ VALUES
 (3, 2, 'Apple', 1),
 (4, 2, 'Banana', 2),
 (5, 2, 'Orange', 3);
+
+INSERT INTO users (id, name, questionnaire) 
+VALUES (1, 'User1', 1);
+
+INSERT INTO answers (id, question, user) 
+VALUES (1, 1, 1);
+
+INSERT INTO answer_options (answer, chosen_option) 
+VALUES (1, 1);
+
+INSERT INTO answers (id, question, user) 
+VALUES (2, 2, 1);
+
+INSERT INTO answer_options (answer, chosen_option) 
+VALUES 
+(2, 3),
+(2, 4);
+
+-- INSERT INTO answers (id, question, user, open_answer) 
+-- VALUES (3, 3, 1, 'A beach holiday with family.');
+
 
 COMMIT;
