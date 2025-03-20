@@ -11,6 +11,7 @@ const swaggerJSDoc = require('swagger-jsdoc');
 // Import routes
 
 const userRoutes = require('./routes/users');
+const questionnaireRoutes = require('./routes/questionnaire')
 
 // init express
 const app = new express();
@@ -57,6 +58,9 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Usa le route
 app.use('/api/users', userRoutes);
+
+app.use('/api/questionnaires', questionnaireRoutes);
+
 
 /*
 // Query parametric /api/domande?admin=value
